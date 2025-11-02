@@ -166,7 +166,7 @@ def init_routes(app):
             minister = Minister.query.get(form.minister_id.data)
             minister.update_total_savings()
             
-            flash(f'Payment of ${payment.amount:.2f} for {minister.full_name} has been recorded successfully!', 'success')
+            flash(f'Payment of UGX{payment.amount:.2f} for {minister.full_name} has been recorded successfully!', 'success')
             return redirect(url_for('payments'))
         return render_template('payment_form.html', title='Record Payment', form=form)
     
@@ -541,4 +541,5 @@ def init_routes(app):
     
     @app.errorhandler(404)
     def not_found_error(error):
+
         return render_template('404.html'),
